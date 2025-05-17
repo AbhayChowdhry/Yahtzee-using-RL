@@ -10,7 +10,7 @@ The objective of the game is to score points by rolling five dice to make certai
 
 Here is an example of the game:
 
-![alt text](GameExample.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/GameExample.jpg)
 Image taken from https://cardgames.io/yahtzee/
 
 I decided to take on the challenge of teaching an AI to master it, not with brute-force calculations, but with the "learn-by-doing" magic of Reinforcement Learning. (We maximize the score of a single agent and not a versus scenario as shown)
@@ -56,7 +56,7 @@ This "observations" and "actions" was flattened into a simple list of numbers.
 
 The DQN would take the flattened observation and try to predict the best action out of these 45 (13 + 32).
 
-![alt text](DQN_1.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/DQN_1.jpg)
 Example illustration of the DQN architecture. 
 
 DQN use a lot of interesting tricks to stabilize training, like experience replay and target networks. I won't go into all the details here, but if you're interested, check out the [original DQN paper](https://www.cs.toronto.edu/~vmnih/docs/dqn.pdf) by Mnih et al.
@@ -81,7 +81,7 @@ I stumbled upon a [Stanford paper](https://web.stanford.edu/class/aa228/reports/
 2.  If "re-roll": A "specialist" network decided *which* of the 32 dice combinations to re-roll.
 3.  If "pick category": Another "specialist" network decided *which* of the 13 categories to fill.
 
-![alt text](HRL.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/HRL.jpg)
 
 I even tried simplifying the re-roll specialist's job by having it output 5 values (one for each die: re-roll or keep) instead of 32 combinations.
 The result? Still stuck at 70. "This was a bummer," is an understatement. 😖
@@ -117,7 +117,7 @@ To get further, I did something... surprisingly fun. I played Yahtzee. A lot. An
 This sparked an idea for what I call **"Dynamic Intuition,"** a custom modification to the DQN framework.
 The core idea: The agent has an "intuition" (a target category) about what to aim for. As the environment (dice rolls) changes, its intuition adapts! Much like life, really. You aim for one thing, life throws you a curveball, and you adjust your plans with the new information.
 
-![alt text](DynamicIntuition.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/DynamicIntuition.jpg)
 
 From the HRL struggles, I learned that a classifier deciding *between* re-rolling and choosing a category was problematic. This is when another lightbulb went on: **“Given a target category and the current dice, deciding what to re-roll is almost part of the game's rules or a very constrained problem!”** (Sure, you could train separate RL agents for each target category to decide re-rolls, but that felt like overkill given how given a category, the reroll stratergy is extremely straight forward).
 
@@ -137,7 +137,7 @@ The first few implementations, along with some much-needed feature enhancements 
 
 ### Attempt #5: The Power Combo - Dynamic Intuition + Curriculum Learning
 
-![alt text](FinalArch.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/FinalArch.jpg)
 
 We had two successful strategies: Dynamic Intuition gave us a better decision-making framework, and Curriculum Learning helped the agent learn fundamentals. What if we combined them?
 The hypothesis: Curriculum Learning could help the Dynamic Intuition model develop its "intuition" more effectively, starting with simpler target-seeking behaviors before tackling the full game's complexity.
@@ -153,6 +153,6 @@ Interestingly, bigger networks sometimes converged to lower optimal scores (even
 
 I built a little interactive page where you can vizualize the live Q-values for each step.
 
-![alt text](demo.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/demo.jpg)
 
 Check it out [here](https://huggingface.co/spaces/abhaych/YahtzeeRL). Ping me if the link doesnt work (it sleeps after inactivity for a while)
