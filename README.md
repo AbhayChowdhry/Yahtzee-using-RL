@@ -151,6 +151,6 @@ Interestingly, bigger networks sometimes converged to lower optimal scores (even
 
 I built a little interactive page where you can vizualize the live Q-values for each step.
 
-![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/demo.jpg)
+![alt text](https://github.com/AbhayChowdhry/Yahtzee-using-RL/blob/main/Images/Demo.jpg)
 
 Check it out [here](https://huggingface.co/spaces/abhaych/YahtzeeRL). Ping me if the link doesnt work (it sleeps after inactivity for a while)
