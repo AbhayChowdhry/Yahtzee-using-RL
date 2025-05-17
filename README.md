@@ -44,8 +44,6 @@ Action space:
 
 The initial version allowed illegal actions, and provided a -50 penalty for them. We talk about this later.
 
-Checkout the environment I built [----PUT ENVIRONMENT LINK!!!!!!]()
-
 ### Attempt #1: The "Flatten Everything and Pray" Basic DQN
 
 My first foray was a straightforward Deep Q-Network. 
